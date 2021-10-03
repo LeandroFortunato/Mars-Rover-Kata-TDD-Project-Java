@@ -10,7 +10,8 @@ import org.junit.Ignore;
 public class MarsRoverTest {
 
     @Test
-    public void CheckFileIsOpened() {
+    public void TryToOpenInputFileAndCheckIfNotEmpty() {
         MarsRover mr001 = new MarsRover(); //arrange - object
-        assertEquals(true, mr001.OpenFile("xyz"));}
+        assertEquals(false,mr001.ReadFile("C:/temp/go-rovers.txt").isEmpty());}
+
 }
