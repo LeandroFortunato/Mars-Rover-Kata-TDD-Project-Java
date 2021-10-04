@@ -18,8 +18,11 @@ public class MarsRoverTest {
         Plateau pl001 = new Plateau(); //arrange - object
         assertEquals(true,pl001.SetUpperRightCoordinateXY(tst001));
 
-        int [][] tst002 = pl001.CalculateBoundaryAllCoordinatesXYs(pl001.UpperRightCoordinateXY);
-        assertEquals(true,tst002.length!=0);}
+        int [][] tst002 = pl001.CalculateBoundaryAllCoordinatesXYs();
+        assertEquals(true,tst002.length!=0);
+
+
+    }
 
 
 }
