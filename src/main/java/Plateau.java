@@ -5,10 +5,13 @@ public class Plateau {
     public int[][] BoundaryAllCoordinatesXYs;
 /*-----------------------------------------*/
 
-    public void SetUpperRightCoordinateXY(int[] pXY) {
+    public boolean SetUpperRightCoordinateXY(int[] pXY) {
+        UpperRightCoordinateXY = pXY;
+        return true;
     }
 
     public int[][] CalculateBoundaryAllCoordinatesXYs(int[] pXY) {
+
         return new int[][]{{,}};
     }
 

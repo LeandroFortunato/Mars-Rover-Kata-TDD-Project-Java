@@ -10,9 +10,16 @@ import org.junit.Ignore;
 public class MarsRoverTest {
 
     @Test
-    public void CheckReadPlateauUpperRightXY() {
+    public void CheckIfFirstLineOfVehicleFileIsOK() {
         VehicleFile vf001 = new VehicleFile(); //arrange - object
-        assertEquals(false,vf001.ReadPlateauUpperRightXY("C:/temp/go-rovers.txt").length!=0);}
+        int[] tst001 = vf001.ReadPlateauUpperRightXY("C:/temp/go-rovers.txt");
+        assertEquals(true,tst001.length!=0);
+
+        Plateau pl001 = new Plateau(); //arrange - object
+        assertEquals(true,pl001.SetUpperRightCoordinateXY(tst001));
+
+        int [][] tst002 = pl001.CalculateBoundaryAllCoordinatesXYs(pl001.UpperRightCoordinateXY);
+        assertEquals(true,tst002.length!=0);}
 
 
 }

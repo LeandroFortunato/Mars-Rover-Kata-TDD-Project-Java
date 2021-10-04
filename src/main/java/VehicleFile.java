@@ -16,17 +16,16 @@ public class VehicleFile {
             Scanner myReader = new Scanner(myObj);
 
             if (myReader.hasNextLine()) {
-                String data = myReader.nextLine();
-                System.out.println(data.split(" "));
-                return new int[]{,};}
+
+                return Functions.StrArrayToIntArray(myReader.nextLine().split(" "));}
+
             else {myReader.close();}
 
         } catch (FileNotFoundException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-
-        return new int[]{,};
+        return new int[]{};
     }
 
     public int[] ReadNextVehicleCurrentPositionXY() {
