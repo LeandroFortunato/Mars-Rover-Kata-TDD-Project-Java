@@ -1,11 +1,16 @@
 import java.util.Arrays;
-import apache.org/proper/commons-lang;
+import java.util.ArrayList;
 
 public class Plateau {
 
 /*-----------------------------------------*/
     public int[] UpperRightCoordinateXY;
-    public int[][] BoundaryAllCoordinatesXYs;
+    public int[][] bottomLineXYs;
+    public int[][] topLineXYs;
+    public int[][] leftLineXYs;
+    public int[][] rightLineXYs;
+
+    //public int[][] BoundaryAllCoordinatesXYs;
 /*-----------------------------------------*/
 
     public boolean SetUpperRightCoordinateXY(int[] pXY) {
@@ -13,41 +18,38 @@ public class Plateau {
         return true;
     }
 
-    public int[][] CalculateBoundaryAllCoordinatesXYs() {
+    public boolean CalculateBoundaryAllCoordinatesXYs() {
 
-        /*--------  UpperRightCoordinateXY[0] = X-final
-                    UpperRightCoordinateXY[1] = Y-final   ------------*/
-
-        /* -------- GENERATE ALL XYs FROM BOTTOM LINE ------------*/
-
-        int[][] bottomLineXYs  = new int[UpperRightCoordinateXY[0]][2];
-
+        bottomLineXYs  = new int[UpperRightCoordinateXY[0]][2];
         for (int i = 0; i <UpperRightCoordinateXY[0]; i++) {
             bottomLineXYs[i][0] = i;
-            bottomLineXYs[i][1] = 0;}
+            bottomLineXYs[i][1] = 0;
+        }
 
-        int[][] topLineXYs  = new int[UpperRightCoordinateXY[0]][2];
-
+        topLineXYs  = new int[UpperRightCoordinateXY[0]][2];
         for (int i = 0; i <UpperRightCoordinateXY[0]; i++) {
             topLineXYs[i][0] = i;
             topLineXYs[i][1] = UpperRightCoordinateXY[0];}
 
-        int[][] leftLineXYs  = new int[UpperRightCoordinateXY[1]][2];
-
+        leftLineXYs  = new int[UpperRightCoordinateXY[1]][2];
         for (int i = 0; i <UpperRightCoordinateXY[1]; i++) {
             leftLineXYs[i][0] = 0;
             leftLineXYs[i][1] = i;}
 
-        int[][] rightLineXYs  = new int[UpperRightCoordinateXY[1]][2];
-
+        rightLineXYs  = new int[UpperRightCoordinateXY[1]][2];
         for (int i = 0; i <UpperRightCoordinateXY[1]; i++) {
             rightLineXYs[i][0] = UpperRightCoordinateXY[1];
             rightLineXYs[i][1] = i;}
 
+        /* --------------- to be removed ---------------*/
+        System.out.println(Arrays.deepToString(bottomLineXYs));
+        System.out.println(Arrays.deepToString(topLineXYs));
+        System.out.println(Arrays.deepToString(leftLineXYs));
+        System.out.println(Arrays.deepToString(rightLineXYs));
+        /* --------------- to be removed ---------------*/
 
-        System.out.println(ArrayUtils.addAll(first, second));
-        return bottomLineXYs;
-                //+topLineXYs+leftLineXYs+rightLineXYs;
+        return true;
+
     }
 
     public void SetBoundaryAllCoordinatesXYs(int[][] pXYs) {
