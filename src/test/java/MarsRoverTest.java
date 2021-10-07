@@ -10,24 +10,30 @@ import org.junit.Ignore;
 public class MarsRoverTest {
 
     @Test
-    public void CheckIfFirstLineOfVehicleFileIsOK() {
-        VehicleFile vf001 = new VehicleFile(); //arrange - object
-        int[] tst001 = vf001.ReadPlateauUpperRightXY("C:/temp/go-rovers.txt");
-        assertEquals(true,tst001.length!=0);
+    public void MissionExecution() {
 
-        Plateau pl001 = new Plateau(); //arrange - object
-        assertEquals(true,pl001.SetUpperRightCoordinateXY(tst001));
+        String [] newRoverStartingPosition;  // [X,Y,Direction]
+        String roverMoves;
 
-        assertEquals(true,pl001.CalculateBoundaryAllCoordinatesXYs());
+        //Create Mission
+        MissionControl Mission = new MissionControl(); //arrange - object
 
-        Rover rv001 = new Rover(); //arrange - object
-        vf001.AddOneMoreVehicle();
+        // Map target (Plateau)
+        Plateau Target = new Plateau(Mission.GetPlateauUpperRightXY("C:/temp/go-rovers.txt")); //arrange - object
+        assertEquals(true,Target.CalculateBoundariesXYs());
 
-        System.out.println(vf001.numberOfVehiclesUpToNow);
+        // Obtain position of new rover on the Plateau
+        newRoverStartingPosition = Mission.ReadNextVehicleInitialPositionXY();
+        assertEquals(true,newRoverStartingPosition.length!=0);
 
-        String[] tst002 = vf001.ReadNextVehicleCurrentPositionXY();
-        System.out.println(Arrays.toString(tst002));
-        assertEquals(true,tst002.length!=0);
+        // Set rover on that position
+        Rover NewRover = new Rover(Mission.AddOneMoreVehicle(),newRoverStartingPosition); //arrange - object
+
+        // Obtain the rover journey and perform it
+        System.out.println(Arrays.toString(NewRover.MoveAvoidingCollision(Mission.ReadSetOfMovesForTheVehicle())));
+
+
+
 
 
 

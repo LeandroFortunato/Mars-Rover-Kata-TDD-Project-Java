@@ -2,15 +2,16 @@ import java.io.File; // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
 
-public class VehicleFile {
+public class MissionControl {
 
-    int numberOfVehiclesUpToNow;
+    int vehiclesInOperation;
+    String [][] lastPositionOfAllVehicles;
     Scanner myReader;
 
-    public VehicleFile() {      //constructor
-        numberOfVehiclesUpToNow = 0;}
+    public MissionControl() {      //constructor
+        vehiclesInOperation = 0;}
 
-    public int[] ReadPlateauUpperRightXY(String pFileName) {
+    public int[] GetPlateauUpperRightXY(String pFileName) {
 
         try {
             java.io.File myObj = new java.io.File(pFileName);
@@ -29,7 +30,7 @@ public class VehicleFile {
         return new int[]{};
     }
 
-    public String[] ReadNextVehicleCurrentPositionXY() {
+    public String[] ReadNextVehicleInitialPositionXY() {
 
         if (myReader.hasNextLine()) {
 
@@ -50,12 +51,10 @@ public class VehicleFile {
         return "";
     }
 
-    public void AddOneMoreVehicle() {
-        numberOfVehiclesUpToNow++;
+    public int AddOneMoreVehicle() {
+
+        return vehiclesInOperation++;
     }
 
-    public Integer GetNumberOfVehiclesSoFar() {
-        return 0;
-    }
 }
 

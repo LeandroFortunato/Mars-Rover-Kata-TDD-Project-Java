@@ -13,12 +13,11 @@ public class Plateau {
     //public int[][] BoundaryAllCoordinatesXYs;
 /*-----------------------------------------*/
 
-    public boolean SetUpperRightCoordinateXY(int[] pXY) {
-        UpperRightCoordinateXY = pXY;
-        return true;
+    public Plateau (int[] pXY){
+        this.UpperRightCoordinateXY = pXY;
     }
 
-    public boolean CalculateBoundaryAllCoordinatesXYs() {
+    public boolean CalculateBoundariesXYs() {
 
         bottomLineXYs  = new int[UpperRightCoordinateXY[0]][2];
         for (int i = 0; i <UpperRightCoordinateXY[0]; i++) {
