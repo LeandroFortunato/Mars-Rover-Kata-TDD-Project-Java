@@ -8,8 +8,7 @@ public abstract class Vehicle {
     public String [] MoveAvoidingCollision(String pSetOfMovesFromFile) {
 
         String[] Moves = pSetOfMovesFromFile.split("");
-        String [] directions = {"N","E","S","W"};
-        int [] clockwise = {1,2,3,4};
+        String [] clockwiseDirections = {"N","E","S","W"};
 
 
         for (int i = 0; i <Moves.length; i++) {
@@ -23,10 +22,17 @@ public abstract class Vehicle {
                 } else { // It is "W"
                     this.CurrentPositionX--;
                 }
-            } else {  // it is either L or R
-                // clockwise {"N1E2S3W4"} = {1,2,3,4}
-                //getClockwiseNumber(this.CurrentDirection)
-                this.CurrentDirection = Moves[i];
+            } else {  // Moves[i] is either "L" (-1,anticlockwise) or "R" (+1,clockwise)
+
+                for (int pointer = 0; pointer < 4; pointer++) {
+                    if (this.CurrentDirection.equals(clockwiseDirections[pointer])){
+                          if (Moves[i].equals("L")) { //  anticlockwise(-1)
+                              this.CurrentDirection = clockwiseDirections[(pointer + 3) % 4];
+                        } else {// it is "R", clockwise(+1)
+                              this.CurrentDirection = clockwiseDirections[(pointer + 1) % 4];}
+                    break;
+                    }
+                }
             }
         }
 
