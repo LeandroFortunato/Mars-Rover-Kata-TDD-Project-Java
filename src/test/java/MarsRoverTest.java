@@ -1,34 +1,52 @@
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-import java.util.Arrays;
 
 public class MarsRoverTest {
 
     @Test
-    public void MissionExecution() {
+    public void ExecuteMission() {
 
-        String [] newRoverStartingPosition;  // [X,Y,Direction]
+        String [] outPutTestArray = {"1 3 N","5 1 E"};
+
+
+        // ------------------- Arrange -----------------------------------------
 
         //Create Mission
         MissionControl Mission = new MissionControl(); //arrange - object
 
         // Map target (Plateau)
         Plateau Target = new Plateau(Mission.GetPlateauUpperRightXY("C:/temp/go-rovers.txt")); //arrange - object
-        assertEquals(true,Target.CalculateBoundariesXYs());
 
-        // Obtain position of new rover on the Plateau
-        newRoverStartingPosition = Mission.ReadNextVehicleInitialPositionXY();
-        assertEquals(true,newRoverStartingPosition.length!=0);
+        // ------------------- Act/Assert -----------------------------------------
 
-        // Set rover on that position
-        Rover NewRover = new Rover(Mission.AddOneMoreVehicle(),newRoverStartingPosition); //arrange - object
-
-        // Obtain the rover journey and perform it
-        System.out.println(Arrays.deepToString
-                (Mission.AddEndPositionToTheMapOfAllVehicles
-                        (NewRover.MoveAvoidingCollision
-                                (Mission.ReadSetOfMovesForTheVehicle()))));
+        assertEquals(false, Target.CalculateBoundariesXYs());
 
 
+        for (String outPutTest : outPutTestArray) {
+
+            // ------------------- Arrange -----------------------------------------
+
+            // Obtain position of new rover on the Plateau
+           String [] newRoverStartingPosition = Mission.ReadNextVehicleInitialPositionXY();
+
+            // ------------------- Act/Assert -----------------------------------------
+
+            assertEquals(false, newRoverStartingPosition.length == 0);
+
+
+            // ------------------- Arrange -----------------------------------------
+
+            // Set rover on that position
+            Rover NewRover = new Rover(Mission.AddOneMoreVehicle(), newRoverStartingPosition); //arrange - object
+
+
+            // ------------------- Act/Assert -----------------------------------------
+
+            // Obtain the rover journey and perform it
+            assertEquals( outPutTest,NewRover.MoveAvoidingCollision
+                                        (Mission.ReadSetOfMovesForTheVehicle()));
+
+
+        }
     }
 }

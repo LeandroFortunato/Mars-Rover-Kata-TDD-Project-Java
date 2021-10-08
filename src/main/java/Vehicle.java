@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public abstract class Vehicle {
 
     public int number;
@@ -5,7 +7,7 @@ public abstract class Vehicle {
     public int CurrentPositionY; // (Y)
     public String CurrentDirection; // (Direction)
 
-    public String [] MoveAvoidingCollision(String pSetOfMovesFromFile) {
+    public String MoveAvoidingCollision(String pSetOfMovesFromFile) {
 
         String[] Moves = pSetOfMovesFromFile.split("");
         String [] clockwiseDirections = {"N","E","S","W"};
@@ -36,9 +38,12 @@ public abstract class Vehicle {
             }
         }
 
-        return new String[]{String.valueOf(CurrentPositionX),
-                            String.valueOf(CurrentPositionY),
-                            CurrentDirection};
+
+
+
+        return String.valueOf(CurrentPositionX)+" "+
+                String.valueOf(CurrentPositionY)+" "+
+                CurrentDirection;
     }
 }
 

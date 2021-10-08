@@ -40,14 +40,11 @@ public class Plateau {
             rightLineXYs[i][1] = i;
         }
 
-        /* --------------- to be removed ---------------*/
-        System.out.println(Arrays.deepToString(bottomLineXYs));
-        System.out.println(Arrays.deepToString(topLineXYs));
-        System.out.println(Arrays.deepToString(leftLineXYs));
-        System.out.println(Arrays.deepToString(rightLineXYs));
-        /* --------------- to be removed ---------------*/
 
-        return true;
+        return  ((bottomLineXYs == null ||
+                 topLineXYs == null    ||
+                 leftLineXYs == null   ||
+                 rightLineXYs == null)) ;
 
     }
 
