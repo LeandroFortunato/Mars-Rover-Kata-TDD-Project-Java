@@ -1,11 +1,6 @@
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.junit.Test;
-import org.junit.Ignore;
 
 public class MarsRoverTest {
 
@@ -13,7 +8,6 @@ public class MarsRoverTest {
     public void MissionExecution() {
 
         String [] newRoverStartingPosition;  // [X,Y,Direction]
-        String roverMoves;
 
         //Create Mission
         MissionControl Mission = new MissionControl(); //arrange - object
@@ -30,11 +24,10 @@ public class MarsRoverTest {
         Rover NewRover = new Rover(Mission.AddOneMoreVehicle(),newRoverStartingPosition); //arrange - object
 
         // Obtain the rover journey and perform it
-        System.out.println(Arrays.toString(NewRover.MoveAvoidingCollision(Mission.ReadSetOfMovesForTheVehicle())));
-
-
-
-
+        System.out.println(Arrays.deepToString
+                (Mission.AddEndPositionToTheMapOfAllVehicles
+                        (NewRover.MoveAvoidingCollision
+                                (Mission.ReadSetOfMovesForTheVehicle()))));
 
 
     }

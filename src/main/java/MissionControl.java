@@ -1,15 +1,15 @@
-import java.io.File; // Import the File class
 import java.io.FileNotFoundException;  // Import this class to handle errors
 import java.util.Scanner; // Import the Scanner class to read text files
 
 public class MissionControl {
 
     int vehiclesInOperation;
-    String [][] lastPositionOfAllVehicles;
+    String [][] currentPositionOfAllVehicles; // XYD's
     Scanner myReader;
 
     public MissionControl() {      //constructor
-        vehiclesInOperation = 0;}
+        vehiclesInOperation = 0;
+        currentPositionOfAllVehicles = new String [][]{};}
 
     public int[] GetPlateauUpperRightXY(String pFileName) {
 
@@ -35,7 +35,7 @@ public class MissionControl {
         if (myReader.hasNextLine()) {
 
             return myReader.nextLine().split(" ");}
-            //return Functions.StrArrayToIntArray(myReader.nextLine().split(" "));}
+
         else {myReader.close();}
 
         return new String[]{};
@@ -46,9 +46,26 @@ public class MissionControl {
 
             return myReader.nextLine();}
 
-        else {myReader.close();}
+        else {
+
+            myReader.close();}
 
         return "";
+    }
+
+    public String [][] AddEndPositionToTheMapOfAllVehicles(String[] pXYD){
+
+        System.out.println((currentPositionOfAllVehicles.length)); //
+
+        String[][] newArray = new String[currentPositionOfAllVehicles.length+1][3];
+
+        for (int i = 0; i < currentPositionOfAllVehicles.length; i++) {
+            newArray[i] = currentPositionOfAllVehicles[i];
+        }
+        newArray[currentPositionOfAllVehicles.length] = pXYD;
+        currentPositionOfAllVehicles = newArray;
+
+        return  currentPositionOfAllVehicles;
     }
 
     public int AddOneMoreVehicle() {
@@ -56,5 +73,11 @@ public class MissionControl {
         return vehiclesInOperation++;
     }
 
+    public boolean TheIntendedMoveWillCollideRoverToAnother(int pNextPositionX,
+                                                            int pNextPositionY) {
+
+        // functionality to be implemented later
+
+        return false;}
 }
 

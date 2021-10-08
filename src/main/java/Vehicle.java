@@ -10,9 +10,9 @@ public abstract class Vehicle {
         String[] Moves = pSetOfMovesFromFile.split("");
         String [] clockwiseDirections = {"N","E","S","W"};
 
-
         for (int i = 0; i <Moves.length; i++) {
             if (Moves[i].equals("M")) {
+
                 if (this.CurrentDirection.equals("N")) {
                     this.CurrentPositionY++;
                 } else if (this.CurrentDirection.equals("S")) {

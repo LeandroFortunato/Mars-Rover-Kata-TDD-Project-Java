@@ -9,14 +9,5 @@ public class Functions {
         return arrayInt;
     }
 
-    static String [][] AddRightToTheLeft(String[][] pArray, String[] pElement){
 
-        String[][] newArray = new String[pArray.length+1][3];
-
-        for (int i = 0; i < pArray.length; i++) {
-            newArray[i] = pArray[i];
-        }
-        newArray[pArray.length] = pElement;
-        return newArray;
-    }
 }
