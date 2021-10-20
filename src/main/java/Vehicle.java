@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public abstract class Vehicle {
 
     public int number;
@@ -38,7 +36,10 @@ public abstract class Vehicle {
             }
         }
 
-
+        System.out.println("Rover moved to position: "
+                +this.CurrentPositionX
+                +this.CurrentPositionY
+                +this.CurrentDirection);
 
 
         return String.valueOf(CurrentPositionX)+" "+

@@ -11,40 +11,39 @@ public class Plateau {
     /*-----------------------------------------*/
 
     public Plateau(int[] pXY) {
+
         this.UpperRightCoordinateXY = pXY;
-    }
 
-    public boolean CalculateBoundariesXYs() {
-
-        bottomLineXYs = new int[UpperRightCoordinateXY[0]][2];
-        for (int i = 0; i < UpperRightCoordinateXY[0]; i++) {
-            bottomLineXYs[i][0] = i;
-            bottomLineXYs[i][1] = 0;
+        this.bottomLineXYs = new int[this.UpperRightCoordinateXY[0]][2];
+        for (int i = 0; i < this.UpperRightCoordinateXY[0]; i++) {
+            this.bottomLineXYs[i][0] = i;
+            this.bottomLineXYs[i][1] = 0;
         }
 
-        topLineXYs = new int[UpperRightCoordinateXY[0]][2];
-        for (int i = 0; i < UpperRightCoordinateXY[0]; i++) {
-            topLineXYs[i][0] = i;
-            topLineXYs[i][1] = UpperRightCoordinateXY[0];
+        this.topLineXYs = new int[this.UpperRightCoordinateXY[0]][2];
+        for (int i = 0; i < this.UpperRightCoordinateXY[0]; i++) {
+            this.topLineXYs[i][0] = i;
+            this.topLineXYs[i][1] = this.UpperRightCoordinateXY[0];
         }
 
-        leftLineXYs = new int[UpperRightCoordinateXY[1]][2];
-        for (int i = 0; i < UpperRightCoordinateXY[1]; i++) {
-            leftLineXYs[i][0] = 0;
-            leftLineXYs[i][1] = i;
+        this.leftLineXYs = new int[this.UpperRightCoordinateXY[1]][2];
+        for (int i = 0; i < this.UpperRightCoordinateXY[1]; i++) {
+            this.leftLineXYs[i][0] = 0;
+            this.leftLineXYs[i][1] = i;
         }
 
-        rightLineXYs = new int[UpperRightCoordinateXY[1]][2];
-        for (int i = 0; i < UpperRightCoordinateXY[1]; i++) {
-            rightLineXYs[i][0] = UpperRightCoordinateXY[1];
-            rightLineXYs[i][1] = i;
+        this.rightLineXYs = new int[this.UpperRightCoordinateXY[1]][2];
+        for (int i = 0; i < this.UpperRightCoordinateXY[1]; i++) {
+            this.rightLineXYs[i][0] = this.UpperRightCoordinateXY[1];
+            this.rightLineXYs[i][1] = i;
         }
 
-
-        return  ((bottomLineXYs == null ||
-                 topLineXYs == null    ||
-                 leftLineXYs == null   ||
-                 rightLineXYs == null)) ;
+        System.out.println("Plateau created upon edges : [0, 0] to "
+                            +Arrays.toString( UpperRightCoordinateXY));
+        System.out.println("South boarder limit coordinates: "+Arrays.deepToString( bottomLineXYs));
+        System.out.println("North boarder limit coordinates: "+Arrays.deepToString( topLineXYs));
+        System.out.println("West boarder limit coordinates: "+Arrays.deepToString( leftLineXYs));
+        System.out.println("East boarder limit coordinates: "+Arrays.deepToString( rightLineXYs));
 
     }
 
